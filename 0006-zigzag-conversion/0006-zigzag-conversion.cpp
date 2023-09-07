@@ -1,20 +1,14 @@
 #include <cstdio>
-using namespace std;
-typedef basic_string<char> string;
 
 class Solution {
 public:
     string convert(string s, int numRows) {
         
         //Initialize values
-        std::string rows [numRows];
+        vector<string> rows (numRows, "");
         int row = 0;
         int direction = 1;
-        std::string solution = "";
-
-        for(int i = 0; i < numRows; i++){
-            rows[i] = "";
-        }
+        string solution = "";
 
         for(int i = 0; i < s.length(); i++){
             if(numRows < 2){direction = 0;}

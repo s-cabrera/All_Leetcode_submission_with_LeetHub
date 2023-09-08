@@ -1,33 +1,31 @@
-
-
 class Solution {
 public:
-
     string convert(string s, int numRows) {
-    
-    if(numRows <= 1) return s;
+        
+        //base case: numRows < 2
+        if(numRows < 2)return s;
 
-    vector<string>v(numRows, ""); 
+        //Initialize values
+        vector<string> rows (numRows, "");
+        int row = 0;
+        int direction = -1;
+        string solution = "";
 
-    int j = 0, dir = -1;
+        for(int i = 0; i < s.length(); i++){
+            if(row == 0 || row == numRows - 1){
+                direction *= -1;
+            }
+            
+            rows[row] += s[i];
 
-    for(int i = 0; i < s.length(); i++)
-    {
-
-        if(j == numRows - 1 || j == 0) dir *= (-1); 
-		 
-        v[j] += s[i];
-
-        if(dir == 1) j++;
-
-        else j--;
-    }
-
-    string res;
-
-    for(auto &it : v) res += it; 
-
-    return res;
-
+            row += direction;
+            
+            
+        }
+        
+        for(int j = 0; j < numRows; j++){
+            solution += rows[j];
+        }
+        return solution;
     }
 };

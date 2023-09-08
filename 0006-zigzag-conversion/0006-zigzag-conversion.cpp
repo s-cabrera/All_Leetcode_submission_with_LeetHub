@@ -6,7 +6,7 @@ public:
         if(numRows < 2)return s;
 
         //Initialize values
-        vector<string> rows (numRows, "");
+        string rows [numRows];
         int row = 0;
         int direction = -1;
         string solution = "";

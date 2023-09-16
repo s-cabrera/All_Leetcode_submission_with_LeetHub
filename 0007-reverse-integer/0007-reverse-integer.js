@@ -24,7 +24,7 @@ var reverse = function(x) {
     let input = Math.abs(x);
     let output = 0;
 
-    while(input > 0 && !out_of_bounds( output , lowerBound, upperBound )){
+    while(input > 0){
         if(!out_of_bounds( ( (output * 10 * sign) + (input % 10) ), lowerBound, upperBound)){
             output = (output * 10) + (input % 10);
             input = Math.floor(input / 10);

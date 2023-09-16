@@ -1,10 +1,3 @@
-var out_of_bounds = function(x, lowerBound, upperBound){
-    if(x < lowerBound || x > upperBound){
-      return 1;  
-    }
-    else {return 0}; 
-}
-
 
 /**
  * @param {number} x
@@ -16,21 +9,24 @@ var reverse = function(x) {
     let upperBound = Math.pow(2,31) - 1;
 
     //Check if x is out of bounds
-    if(out_of_bounds(x, lowerBound, upperBound)){
+    if(x < lowerBound || x > upperBound ){
         return 0;
     }
 
     let sign = (x > 0) ? 1 : -1;
-    let input = Math.abs(x);
     let output = 0;
+    x = Math.abs(x);
 
-    while(input){
-        if( out_of_bounds ( (output * 10 * sign) + (input % 10) , lowerBound, upperBound) ){
+    while(x){
+        // console.log(x + " , " + output);
+        if( (((output * 10 * sign) + (x % 10)) < lowerBound) ||  (((output * 10 * sign) + (x % 10))  > upperBound) ){
             return 0;
         }
-        output = (output * 10) + (input % 10);
-        input = Math.floor(input / 10);
+        output = (output * 10) + (x % 10);
+        x = Math.floor(x / 10);
+        
     }
+
     return output * sign;
 };
 

@@ -24,14 +24,12 @@ var reverse = function(x) {
     let input = Math.abs(x);
     let output = 0;
 
-    while(input > 0){
-        if(!out_of_bounds( ( (output * 10 * sign) + (input % 10) ), lowerBound, upperBound)){
-            output = (output * 10) + (input % 10);
-            input = Math.floor(input / 10);
-        }
-        else{
+    while(input){
+        if( out_of_bounds ( (output * 10 * sign) + (input % 10) , lowerBound, upperBound) ){
             return 0;
         }
+        output = (output * 10) + (input % 10);
+        input = Math.floor(input / 10);
     }
     return output * sign;
 };
